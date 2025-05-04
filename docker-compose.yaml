@@ -1,0 +1,38 @@
+version: '3.7'
+
+# Define common environment variables
+x-common-env: &common-env
+  - DB_USER=postgres
+  - DB_PASSWORD=password
+  - DB_HOST=db
+  - DB_PORT=5432
+  - DB_NAME=mydb
+  
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi
+    ports:
+      - "8000:8000"
+    environment: *common-env
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
