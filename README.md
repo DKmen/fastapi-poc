@@ -45,8 +45,6 @@ This project implements:
 
 ## DB Migration Run Guides
 
-## DB Migration Run Guides
-
 ### Prerequisites
 - Ensure PostgreSQL is installed and running
 - Make sure all dependencies are installed via `pip install -r requirements.txt`
