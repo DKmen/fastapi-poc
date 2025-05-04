@@ -126,6 +126,9 @@ def rolebase_middleware(full_request: Request, request: HTTPAuthorizationCredent
         logger.debug({
             "message": "(rolebase_middleware) is path allowed",
             "is_path_allowed": is_path_allowed,
+            "permsission_routes": permission.permission_routes,
+            "permission_type": permission.permission_type,
+            "method": full_request.method.lower(),
         })
 
         if is_path_allowed and (full_request.method.lower() == permission.permission_type.value or permission.permission_type == PermissionType.ADMIN):

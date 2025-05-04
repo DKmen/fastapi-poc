@@ -8,7 +8,7 @@ class PermissionType(Enum):
     POST = "post"
     GET = "get"
     PUT = "put"
-    PATCH = "update"
+    PATCH = "patch"
     DELETE = "delete"
 
 class Permission(BaseModel, table=True):
